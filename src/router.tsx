@@ -3,7 +3,7 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 import { MainLayout } from './layouts';
 import { Home, NotFound } from './pages';
 
-const router = createBrowserRouter(
+export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
       <Route index element={<Home />} />
@@ -11,5 +11,3 @@ const router = createBrowserRouter(
     </Route>,
   ),
 );
-
-export default router;

@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { sliceReducer } from './slice/slice';
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     sliceReducer,
   },
@@ -11,5 +11,3 @@ const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
-
-export default store;

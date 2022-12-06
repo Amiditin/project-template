@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import router from './router';
-import store from './redux/store';
+import { router } from './router';
+import { store } from './redux/store';
+
 import './scss/app.scss';
 // Если нужно
 // import 'antd/dist/reset.css';
