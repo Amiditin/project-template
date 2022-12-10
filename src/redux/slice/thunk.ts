@@ -1,8 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from '../../axios';
+import { AxiosError } from 'axios';
 
-export const getData = createAsyncThunk<any[]>('slice/getData', async () => {
-  const { data } = await axios.get('/auth/user');
+import { apiRoutes } from '@/services/apiRoutes';
+import { getDataRequest } from '@/services/dataService';
 
-  return data;
+export const getData = createAsyncThunk<any[]>(apiRoutes.DATA, async () => {
+  try {
+    const { data } = await getDataRequest();
+
+    return data;
+  } catch (error) {
+    return error as AxiosError;
+  }
 });
