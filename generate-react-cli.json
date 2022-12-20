@@ -29,7 +29,8 @@
     "redux": {
       "customTemplates": {
         "slice": "templates/redux/slice.ts",
-        "types": "templates/redux/types.ts"
+        "types": "templates/redux/types.ts",
+        "index": "templates/redux/index.ts"
       },
       "path": "src/redux",
       "withStyle": false,
@@ -37,7 +38,8 @@
       "withStory": false,
       "withLazy": false,
       "withSlice": true,
-      "withTypes": true
+      "withTypes": true,
+      "withIndex": true
     }
   }
 }

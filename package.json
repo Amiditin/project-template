@@ -9,6 +9,10 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
+  "engines": {
+    "node": ">=15.0.0",
+    "npm": ">=8.0.0"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
     "antd": "^5.0.1",
