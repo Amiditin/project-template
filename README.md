@@ -1,5 +1,7 @@
 # 👑 Шаблон для проекта на Vite 👑
 
+⚙️ Запустить проект в режиме разработки `yarn dev`
+
 # 🛠 Стек:
 
 - **[React JS 18](https://reactjs.org)**
@@ -12,3 +14,11 @@
 - [Generate React CLI](https://github.com/arminbro/generate-react-cli) (шаблоны)
 - [Prettier](https://prettier.io) (форматирование кода)
 - [CLSX](https://github.com/lukeed/clsx) (замена Classnames)
+
+# 🔧 Окружение
+
+В проекте используются:
+
+- Node.js v18.12.1
+- npm v8.6.0
+- yarn v1.22.18

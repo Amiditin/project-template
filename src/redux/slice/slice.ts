@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getData } from './thunk';
 
-import type { SliceState } from './types';
+import type { ISliceState } from './types';
 
-const initialState: SliceState = {
+const initialState: ISliceState = {
   data: [],
 };
 

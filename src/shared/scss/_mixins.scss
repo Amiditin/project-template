@@ -1,54 +1,32 @@
+// * Основаны на antd https://ant.design/components/grid#col
+
 @mixin media-breakpoint-down($size) {
-  @if $size==xxxl {
-    @media (max-width: 1919.78px) {
-      @content;
-    }
-  }
-
-  @else if $size==xxl {
-    @media (max-width: 1399.78px) {
-      @content;
-    }
-  }
-
-  @else if $size==maxXl {
-    @media (max-width: 1123.98px) {
-      @content;
-    }
-  }
-
-  @else if $size==xl {
-    @media (max-width: 1023.98px) {
+  @if $size==xl {
+    @media (max-width: 1600px) {
       @content;
     }
   }
 
   @else if $size==lg {
-    @media (max-width: 991.98px) {
+    @media (max-width: 1200px) {
       @content;
     }
   }
 
   @else if $size==md {
-    @media (max-width: 767.98px) {
+    @media (max-width: 992px) {
       @content;
     }
   }
 
   @else if $size==sm {
-    @media (max-width: 575.98px) {
+    @media (max-width: 768px) {
       @content;
     }
   }
 
   @else if $size==xs {
-    @media (max-width: 359.78px) {
-      @content;
-    }
-  }
-
-  @else if $size==mobile {
-    @media (max-width: 320px) {
+    @media (max-width: 576px) {
       @content;
     }
   }

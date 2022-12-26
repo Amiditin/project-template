@@ -1,11 +1,7 @@
-import React from 'react';
 import { useRouteError } from 'react-router-dom';
-
 import { Button, Result } from 'antd';
 
-type MainErrorBoundaryProps = {};
-
-export const MainErrorBoundary: React.FC<MainErrorBoundaryProps> = () => {
+export const MainErrorBoundary: React.FC = () => {
   const error = useRouteError();
   console.error(error);
 
@@ -24,5 +20,3 @@ export const MainErrorBoundary: React.FC<MainErrorBoundaryProps> = () => {
     />
   );
 };
-
-// TODO Добавить ссылку на тех поддержку

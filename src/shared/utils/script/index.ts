@@ -1,3 +1,3 @@
-import type { Script } from './types';
+export type TScript = () => void;
 
-export const script: Script = () => {};
+export const script: TScript = () => {};

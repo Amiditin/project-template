@@ -1,5 +1,5 @@
-import type { RootState } from '../store';
+import type { TRootState } from '../store';
 
-export const getSliceData = (store: RootState) => {
+export const getSliceData = (store: TRootState) => {
   return store.slice.data;
 };

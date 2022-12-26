@@ -1,3 +1,3 @@
-export interface SliceState {
+export interface ISliceState {
   data: any[];
 }

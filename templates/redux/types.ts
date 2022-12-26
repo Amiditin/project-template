@@ -1,1 +1,1 @@
-export interface TemplateNameState {}
+export interface ITemplateNameState {}

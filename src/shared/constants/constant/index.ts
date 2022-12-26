@@ -1,3 +1,3 @@
-import type { Constant } from './types';
+export type TConstant = any[];
 
-export const constant: Constant = [];
+export const constant: TConstant = [];

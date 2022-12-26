@@ -13,6 +13,6 @@ export const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type TRootState = ReturnType<typeof store.getState>;
 
-export type AppDispatch = typeof store.dispatch;
+export type TAppDispatch = typeof store.dispatch;

@@ -1,12 +1,10 @@
-import React from 'react';
-import styles from './MainLayout.module.scss';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 
 import { Header } from '@/components';
 
-interface MainLayoutProps {}
+import styles from './MainLayout.module.scss';
 
-export const MainLayout: React.FC<MainLayoutProps> = () => {
+export const MainLayout: React.FC = () => {
   return (
     <div className={styles.layout}>
       <Header />

@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './Home.module.scss';
 
-interface HomeProps {}
-
-export const Home: React.FC<HomeProps> = () => {
+export const Home: React.FC = () => {
   return <div className={styles.home}>Home Page</div>;
 };

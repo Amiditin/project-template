@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { TemplateNameState } from './types';
+import type { ITemplateNameState } from './types';
 
-const initialState: TemplateNameState = {};
+const initialState: ITemplateNameState = {};
 
 const templateNameSlice = createSlice({
   name: 'templateName',

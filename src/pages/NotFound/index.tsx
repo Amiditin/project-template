@@ -1,11 +1,9 @@
-import React from 'react';
-import styles from './NotFound.module.scss';
 import { Link } from 'react-router-dom';
 import { Button, Result } from 'antd';
 
-interface NotFoundProps {}
+import styles from './NotFound.module.scss';
 
-export const NotFound: React.FC<NotFoundProps> = () => {
+export const NotFound: React.FC = () => {
   return (
     <div className={styles.notFound}>
       <Result
