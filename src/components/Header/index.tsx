@@ -1,14 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import { GlobalOutlined } from '@ant-design/icons';
-
+import React from 'react';
 import styles from './Header.module.scss';
 
 export const Header: React.FC = () => {
-  const navigate = useNavigate();
-
-  return (
-    <div className={styles.header}>
-      <GlobalOutlined className={styles.globalIcon} onClick={() => navigate('/')} />
-    </div>
-  );
+  return <div className={styles.header}>Header Component</div>;
 };
