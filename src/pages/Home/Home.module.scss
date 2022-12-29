@@ -1,8 +1,42 @@
 @import '/src/shared/scss/variables';
 
 .home {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  max-width: 1240px;
+  max-width: 940px;
   margin: 0 auto;
   padding: 0 10px;
+}
+
+.filters {
+  background-color: white;
+  width: 300px;
+  height: 439px;
+  padding: 30px 23px;
+  border-radius: 8px;
+  box-shadow: 1px 4px 8px rgba($color: $bg-color, $alpha: 0.6);
+
+}
+
+.checkboxGroup {
+  flex-direction: column;
+  gap: 12px;
+
+  label {
+    margin-inline-start: 0 !important;
+  }
+}
+
+.list {
+  width: 600px;
+}
+
+.item {
+  display: flex !important;
+  width: 600px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 1px 4px 8px rgba($color: $bg-color, $alpha: 0.6);
+  margin-bottom: 20px;
 }

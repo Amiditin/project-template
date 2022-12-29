@@ -1,0 +1,88 @@
+@import '/src/shared/scss/variables';
+
+.infoLeft {
+  width: 200px;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.line {
+  height: 100px;
+}
+
+
+.info {
+  width: 100%;
+  padding: 0 12px;
+
+  .box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .departure {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .arrival {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+  }
+
+  .dateText {
+    font-size: 12px;
+  }
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .time {
+    font-size: 32px;
+  }
+}
+
+.stops {
+  text-align: center;
+  padding-bottom: 15px;
+
+
+  .stopsText {
+    font-size: 12px;
+  }
+
+  .arrow {
+    background: rgba(0, 0, 0, 0.45);
+    height: 2px;
+    width: 135px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 2px;
+
+    &:before,
+    &:after {
+      content: "";
+      background: rgba(0, 0, 0, 0.45);
+      position: absolute;
+      height: 2px;
+    }
+
+    &:before {
+      width: 9px;
+      right: -1px;
+      bottom: -3px;
+      transform: rotate(-45deg);
+    }
+
+    &:after {
+      width: 9px;
+      right: -1px;
+      top: -3px;
+      transform: rotate(45deg);
+    }
+  }
+}
