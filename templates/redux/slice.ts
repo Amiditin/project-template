@@ -11,6 +11,4 @@ const templateNameSlice = createSlice({
   extraReducers: (builder) => {},
 });
 
-export const templateNameActions = templateNameSlice.actions;
-
-export const templateNameReducer = templateNameSlice.reducer;
+export const { actions: templateNameActions, reducer: templateNameReducer } = templateNameSlice;

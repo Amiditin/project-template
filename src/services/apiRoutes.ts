@@ -1,3 +1,3 @@
-export enum apiRoutes {
-  DATA = '/data',
-}
+export const apiRoutes = {
+  data: '/data',
+};

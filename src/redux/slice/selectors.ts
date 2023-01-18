@@ -1,4 +1,4 @@
-import type { TRootState } from '../store';
+import type { TRootState } from '@/redux/types';
 
 export const getSliceData = (store: TRootState) => {
   return store.slice.data;

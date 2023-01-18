@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { sliceReducer } from './slice/slice';
+import { sliceReducer } from './slice';
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +12,3 @@ export const store = configureStore({
     });
   },
 });
-
-export type TRootState = ReturnType<typeof store.getState>;
-
-export type TAppDispatch = typeof store.dispatch;

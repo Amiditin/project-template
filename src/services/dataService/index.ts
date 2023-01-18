@@ -1,6 +1,6 @@
-import { axios } from '../axios';
-import { apiRoutes } from '../apiRoutes';
+import { axios } from '@/services/axios';
+import { apiRoutes } from '@/services/apiRoutes';
 
 export const getDataRequest = () => {
-  return axios.get(apiRoutes.DATA);
+  return axios.get(apiRoutes.data);
 };

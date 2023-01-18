@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { getData } from './thunk';
 
 import type { ISliceState } from './types';
@@ -26,6 +27,4 @@ const sliceSlice = createSlice({
   },
 });
 
-export const sliceActions = sliceSlice.actions;
-
-export const sliceReducer = sliceSlice.reducer;
+export const { actions: sliceActions, reducer: sliceReducer } = sliceSlice;

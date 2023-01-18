@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Button, Result } from 'antd';
 
+import { routes } from '@/router/routes';
+
 import styles from './NotFound.module.scss';
 
 export const NotFound: React.FC = () => {
@@ -12,7 +14,7 @@ export const NotFound: React.FC = () => {
         title="404"
         subTitle="Страница не найдена. Попробуйте найти то, что вам нужно, с главной страницы."
         extra={
-          <Link to="/">
+          <Link to={routes.home}>
             <Button type="primary">На главную</Button>
           </Link>
         }
