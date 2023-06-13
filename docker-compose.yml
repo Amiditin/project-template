@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      context: .
+      target: nginx
+    expose:
+      - 80
+    ports:
+      - "8000:80"
+    restart: always
+

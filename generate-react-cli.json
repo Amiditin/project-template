@@ -41,5 +41,6 @@
       "withTypes": true,
       "withIndex": true
     }
-  }
+  },
+  "usesStyledComponents": true
 }

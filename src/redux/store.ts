@@ -1,14 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { sliceReducer } from './slice';
+import { postsReducer } from './posts';
 
 export const store = configureStore({
   reducer: {
-    slice: sliceReducer,
+    posts: postsReducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware({
-      serializableCheck: false,
-    });
+    return getDefaultMiddleware({ serializableCheck: false });
   },
 });
