@@ -15,7 +15,7 @@
 - **[Axios](https://axios-http.com)**
 - **[Ant Design 5.0](https://ant.design)**
 - [CSS-Modules / SCSS](https://sass-lang.com)
-- [ESLint](https://eslint.org)/[Prettier](https://prettier.io) (форматирование кода)
+- [ESLint /](https://eslint.org)[ Prettier](https://prettier.io) (форматирование кода)
 - [Generate React CLI](https://github.com/arminbro/generate-react-cli) (шаблоны компонентов)
 - [CLSX](https://github.com/lukeed/clsx) (альтернатива Classnames)
 - [Day.js](https://github.com/lukeed/clsx) (альтернатива Moment.js)
