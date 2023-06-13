@@ -1,1 +1,3 @@
-export interface ITemplateNameState {}
+export interface ITemplateNameState {
+  items: unknown[];
+}

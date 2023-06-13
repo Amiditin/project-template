@@ -2,13 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { ITemplateNameState } from './types';
 
-const initialState: ITemplateNameState = {};
+const initialState: ITemplateNameState = {
+  items: [],
+};
 
 const templateNameSlice = createSlice({
   name: 'templateName',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: () => undefined,
 });
 
 export const { actions: templateNameActions, reducer: templateNameReducer } = templateNameSlice;

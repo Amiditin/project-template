@@ -5,7 +5,7 @@ import { routes } from '@/router/routes';
 
 import styles from './NotFound.module.scss';
 
-export const NotFound: React.FC = () => {
+export const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.notFound}>
       <Result
@@ -14,7 +14,7 @@ export const NotFound: React.FC = () => {
         title="404"
         subTitle="Страница не найдена. Попробуйте найти то, что вам нужно, с главной страницы."
         extra={
-          <Link to={routes.home}>
+          <Link to={routes.home.path}>
             <Button type="primary">На главную</Button>
           </Link>
         }
