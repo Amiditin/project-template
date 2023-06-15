@@ -35,7 +35,7 @@
   "rules": {
     "arrow-body-style": "off",
     "import/order": [
-      "error",
+      "warn",
       {
         "groups": [
           ["builtin", "external"],
