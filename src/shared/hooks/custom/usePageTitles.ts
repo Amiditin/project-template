@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import type { TRoutes } from '@/router';
 
-const generalPageTitle = 'Тест Связи Чисел';
+const generalPageTitle = 'Страница';
 
 export const usePageTitles = (routes: TRoutes) => {
   const location = useLocation();
