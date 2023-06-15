@@ -3,7 +3,7 @@ import { type ActionCreatorsMapObject, bindActionCreators } from '@reduxjs/toolk
 
 import { useAppDispatch } from './useAppDispatch';
 
-export const useActionCreators = (actions: ActionCreatorsMapObject) => {
+export const useActionCreators = <Actions extends ActionCreatorsMapObject>(actions: Actions) => {
   const dispatch = useAppDispatch();
 
   return useMemo(() => bindActionCreators(actions, dispatch), [actions, dispatch]);
