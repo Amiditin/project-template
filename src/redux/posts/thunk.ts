@@ -1,12 +1,11 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
 import { postsService } from '@/shared/api/services';
+import { createAppThunk } from '@/redux/utils';
 
 import { postsName } from './slice';
 
 import type { IPostModel } from '@/shared/api/models';
-import type { TThunkConfig } from '@/redux/types';
 import type { TPostCreate, TPostUpdate } from '@/shared/api/services/posts/types';
 
 const getAllItems = async () => {
@@ -16,18 +15,15 @@ const getAllItems = async () => {
 };
 
 export const postsThunks = {
-  findAll: createAsyncThunk<IPostModel[], undefined, TThunkConfig>(
-    `${postsName}/findAll`,
-    async (_, { rejectWithValue }) => {
-      try {
-        return await getAllItems();
-      } catch (error) {
-        return rejectWithValue(error as AxiosError);
-      }
-    },
-  ),
+  findAll: createAppThunk<IPostModel[]>(`${postsName}/findAll`, async (_, { rejectWithValue }) => {
+    try {
+      return await getAllItems();
+    } catch (error) {
+      return rejectWithValue(error as AxiosError);
+    }
+  }),
 
-  create: createAsyncThunk<IPostModel[], TPostCreate, TThunkConfig>(
+  create: createAppThunk<IPostModel[], TPostCreate>(
     `${postsName}/create`,
     async (params, { rejectWithValue }) => {
       try {
@@ -40,7 +36,7 @@ export const postsThunks = {
     },
   ),
 
-  update: createAsyncThunk<IPostModel[], TPostUpdate, TThunkConfig>(
+  update: createAppThunk<IPostModel[], TPostUpdate>(
     `${postsName}/update`,
     async (params, { rejectWithValue }) => {
       try {
@@ -53,7 +49,7 @@ export const postsThunks = {
     },
   ),
 
-  remove: createAsyncThunk<IPostModel[], { id: string }, TThunkConfig>(
+  remove: createAppThunk<IPostModel[], { id: string }>(
     `${postsName}/remove`,
     async (params, { rejectWithValue }) => {
       try {
