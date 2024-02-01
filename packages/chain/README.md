@@ -12,11 +12,11 @@ Add to `package.json`:
 }
 ```
 
-And run `npm i`.
+And run `yarn`.
 
 ## Dev
 
-Run `npm run dev` and open [http://localhost:8080](http://localhost:8080)
+Run `yarn dev` and open [http://localhost:8080](http://localhost:8080)
 
 ## How to use
 
