@@ -1052,6 +1052,10 @@ ChainBlock.prototype.buildMessage = function() {
 			return tooltip.html()
 		}.bind(this)).tooltip({container: 'body', toggle: 'tooltip', html: true, placement: 'bottom'})
 	}
+	if( ChainRules.templates[this.data.channel] ) {
+		let message_template = helper.createElementFromHTML('<div class="message_template">' + ChainRules.templates[this.data.channel].find(v => v.id == this.data.template_id)?.name + '</div>');
+		block.querySelector('.block__text').appendChild(message_template);
+	}
 
 	//Добавляем кнопку предпросмотра
 	let preview = this.buildTemplateAction('preview', function() {
