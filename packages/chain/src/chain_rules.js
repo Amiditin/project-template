@@ -1645,8 +1645,8 @@ ChainModal.prototype.editCondition = function(values, callback) {
 ChainModal.prototype.editMessage = function(channel, template_id, callback) {
 	let body = helper.createElementFromHTML('<div style="min-width: 450px"></div>'), template,
 		select_channel = helper.createElement('select', 'form-select'), help = '';
-	let channel_action = helper.createElementFromHTML('<div class="form-group form-action"><label class="control-label" for="title_message_block">' + LABELS[ChainRules.Conditions.locale].message_channel_label + '</label></div>');
-	let template_action = helper.createElementFromHTML('<div class="d-flex align-items-end"></div>'),
+	let channel_action = helper.createElementFromHTML('<div class="form-group form-action select-channel"><label class="control-label" for="title_message_block">' + LABELS[ChainRules.Conditions.locale].message_channel_label + '</label></div>');
+	let template_action = helper.createElementFromHTML('<div class="d-flex align-items-end select-channel-template"></div>'),
 		template_action_item = helper.createElementFromHTML('<div class="flex-fill"></div>'),
 		template_action_value = helper.createElementFromHTML('<div class="form-group mb-0 form-action"><label class="control-label" for="title_message_block">' + LABELS[ChainRules.Conditions.locale].message_template_label + '</label></div>');
 
