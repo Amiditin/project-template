@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --progress --port 8081",
     "sass": "./node_modules/sass/sass.js -I ./node_modules --no-source-map src/chains.scss ./css/chains.css",
-    "build": "./node_modules/.bin/webpack --mode=production"
+    "build": "../../node_modules/.bin/webpack --mode=production"
   },
   "author": "Sergey Odintsov <nixx.dj@gmail.com> (https://github.com/PNixx)",
   "license": "ISC",
@@ -21,6 +21,6 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
-    "@rees46/segmentator-library": "git+ssh://git@git.jetbrains.space/rees46/dev/npm-segmentator-library.git"
+    "@rees46/segmentator-library": "workspace:*"
   }
 }
