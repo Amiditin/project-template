@@ -1,6 +1,6 @@
 {
   "name": "@rees46/chain-library",
-  "version": "1.0.3",
+  "version": "2.0.1",
   "description": "REES46 Chain library",
   "main": "index.js",
   "installConfig": {
@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "webpack-dev-server --progress --port 8081",
     "sass": "./node_modules/sass/sass.js -I ./node_modules --no-source-map src/chains.scss ./css/chains.css",
-    "build": "./node_modules/.bin/webpack --mode=production"
+    "build": "./node_modules/.bin/webpack --mode=production",
+    "prepack": "run sass && run build && mkdir -p dist/scss && cp -r src/*.scss dist/scss && cp -r css dist"
   },
   "author": "Sergey Odintsov <nixx.dj@gmail.com> (https://github.com/PNixx)",
   "license": "ISC",
@@ -26,5 +27,10 @@
   },
   "dependencies": {
     "@rees46/segmentator-library": "workspace:*"
+  },
+  "files": ["dist"],
+  "publishConfig": {
+    "main": "dist/index.js",
+    "access": "public"
   }
 }
