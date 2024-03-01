@@ -1624,6 +1624,7 @@ ChainModal.prototype.editDelay = function(value, callback) {
 		// this.hide();
 	// }
 	this.show(LABELS[ChainRules.Conditions.locale].delay_title, body, true);
+
 	if( typeof $ !== 'undefined' && typeof $.fn !== 'undefined' && typeof $.fn.custom_number_input !== 'undefined' ) {
 		$(day).custom_number_input({wrapper: 'mr-2'});
 		$(hour).custom_number_input({wrapper: 'mr-2'});
