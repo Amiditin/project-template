@@ -471,12 +471,15 @@ ChainRules.prototype.toJSON = function() {
 ChainRules.prototype.fetchChain = function() {
 	const params = new URLSearchParams();
 	params.append('locale', ChainRules.Conditions.locale);
+
 	if( this.shop_id ) {
 		params.append('shop_id', this.shop_id);
 	}
+
 	if( this.period ) {
 		params.append('period', this.period);
 	}
+
 	return fetch(API_HOST + '/api/v2/chains/' + this.id + '?' + params.toString(), {
 		method: 'GET',
 		headers: {
