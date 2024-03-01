@@ -943,7 +943,6 @@ ChainBlock.prototype.choiceAddAction = function() {
  */
 ChainBlock.prototype.onUpdate = function() {
 	switch( this.data.type ) {
-
 		case 'delay':
 			this.block.querySelector('.block__text span').textContent = this.secondsToStr(this.data.delay * 1);
 			this.isValid();
