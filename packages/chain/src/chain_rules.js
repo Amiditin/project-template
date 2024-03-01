@@ -1348,6 +1348,7 @@ ChainBlock.prototype.edit = function() {
  */
 ChainBlock.prototype.isValid = function() {
 	let valid = true, valid_only_class = true;
+
 	switch( this.data.type ) {
 		case 'condition':
 		case 'http':
