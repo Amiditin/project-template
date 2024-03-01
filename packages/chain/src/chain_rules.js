@@ -254,7 +254,9 @@ ChainRules.channels = {
 		whatsapp: 'WhatsApp',
 	}
 };
+
 ChainRules.digests = {};
+
 ChainRules.chains = {};
 
 //Расширяем настройки
