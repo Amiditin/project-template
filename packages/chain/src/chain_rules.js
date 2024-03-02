@@ -1845,9 +1845,11 @@ ChainModal.prototype.editMessage = function(channel, template_id, callback) {
 	// }
 	select_channel.value = channel;
 	updateTemplates();
+
 	if( channel != 'http' ) {
 		template.value = template_id;
 	}
+
 	template.dispatchEvent(new Event('change'));
 	this.show(LABELS[ChainRules.Conditions.locale].message_title, body, true);
 };
