@@ -24,14 +24,17 @@ function ChainRules(id, selector, modal_selector, readonly, on_load, shop_id, pe
 	this.doc = document.querySelector(selector);
 	this.container = helper.createElementFromHTML('<div class="module"></div>');
 	this.doc.appendChild(this.container);
+
 	if( !this.readonly ) {
 		this.modal = new ChainModal(modal_selector, this);
 	}
+
 	this.changed = false;
 	this.container.addEventListener('rules:change', () => {
 		this.changed = true;
 		this.isValid();
 	});
+
 	window.addEventListener('beforeunload', e => {
 		if( this.changed ) {
 			e.returnValue = 'You are about to leave the editor without saving your changes. All your changes will be lost. Are you sure?';
@@ -254,7 +257,9 @@ ChainRules.channels = {
 		whatsapp: 'WhatsApp',
 	}
 };
+
 ChainRules.digests = {};
+
 ChainRules.chains = {};
 
 //Расширяем настройки
@@ -466,12 +471,15 @@ ChainRules.prototype.toJSON = function() {
 ChainRules.prototype.fetchChain = function() {
 	const params = new URLSearchParams();
 	params.append('locale', ChainRules.Conditions.locale);
+
 	if( this.shop_id ) {
 		params.append('shop_id', this.shop_id);
 	}
+
 	if( this.period ) {
 		params.append('period', this.period);
 	}
+
 	return fetch(API_HOST + '/api/v2/chains/' + this.id + '?' + params.toString(), {
 		method: 'GET',
 		headers: {
@@ -935,7 +943,6 @@ ChainBlock.prototype.choiceAddAction = function() {
  */
 ChainBlock.prototype.onUpdate = function() {
 	switch( this.data.type ) {
-
 		case 'delay':
 			this.block.querySelector('.block__text span').textContent = this.secondsToStr(this.data.delay * 1);
 			this.isValid();
@@ -1341,6 +1348,7 @@ ChainBlock.prototype.edit = function() {
  */
 ChainBlock.prototype.isValid = function() {
 	let valid = true, valid_only_class = true;
+
 	switch( this.data.type ) {
 		case 'condition':
 		case 'http':
@@ -1616,6 +1624,7 @@ ChainModal.prototype.editDelay = function(value, callback) {
 		// this.hide();
 	// }
 	this.show(LABELS[ChainRules.Conditions.locale].delay_title, body, true);
+
 	if( typeof $ !== 'undefined' && typeof $.fn !== 'undefined' && typeof $.fn.custom_number_input !== 'undefined' ) {
 		$(day).custom_number_input({wrapper: 'mr-2'});
 		$(hour).custom_number_input({wrapper: 'mr-2'});
