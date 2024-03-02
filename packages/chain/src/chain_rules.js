@@ -585,6 +585,7 @@ ChainModule.prototype.append = function(data, position) {
 	if( typeof position !== 'number' ) {
 		position = this.blocks.length
 	}
+
 	this.blocks.splice(position, 0, module);
 };
 
