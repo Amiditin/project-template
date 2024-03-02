@@ -581,6 +581,7 @@ ChainModule.prototype.parse = function(data) {
  */
 ChainModule.prototype.append = function(data, position) {
 	let module = new ChainBlock(this.root, this, data);
+
 	if( typeof position !== 'number' ) {
 		position = this.blocks.length
 	}
