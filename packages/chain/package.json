@@ -1,6 +1,6 @@
 {
   "name": "@rees46/chain-library",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "REES46 Chain library",
   "main": "index.js",
   "installConfig": {
