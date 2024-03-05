@@ -581,9 +581,11 @@ ChainModule.prototype.parse = function(data) {
  */
 ChainModule.prototype.append = function(data, position) {
 	let module = new ChainBlock(this.root, this, data);
+
 	if( typeof position !== 'number' ) {
 		position = this.blocks.length
 	}
+
 	this.blocks.splice(position, 0, module);
 };
 
@@ -1845,9 +1847,11 @@ ChainModal.prototype.editMessage = function(channel, template_id, callback) {
 	// }
 	select_channel.value = channel;
 	updateTemplates();
+
 	if( channel != 'http' ) {
 		template.value = template_id;
 	}
+
 	template.dispatchEvent(new Event('change'));
 	this.show(LABELS[ChainRules.Conditions.locale].message_title, body, true);
 };
