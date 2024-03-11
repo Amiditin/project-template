@@ -1,5 +1,4 @@
 import helper from '@rees46/segmentator-library/src/helper';
-import R46Conditions from "@rees46/segmentator-library/src/conditions";
 
 /**
  * Блок условий цепочки
@@ -267,7 +266,7 @@ ChainRules.Conditions.extend_properties = Object.assign(ChainRules.Conditions.ex
 	add_product_to_cart: {
 		group: 'actions',
 		type: 'boolean',
-		periods: ChainRules.Conditions.small_periods[ChainRules.Conditions.locale],
+		periods: ChainRules.Conditions.small_periods[ChainRules.Conditions.locale].concat([[{en: 'All time', ru: 'За все время'}[ChainRules.Conditions.locale], 'all']]),
 	},
 	channel_subscribe: {
 		group: 'communications',
@@ -307,7 +306,7 @@ ChainRules.Conditions.extend_properties = Object.assign(ChainRules.Conditions.ex
 		type: 'select',
 		switch: true,
 		operators: 'yesNo',
-		periods: ChainRules.Conditions.small_periods[ChainRules.Conditions.locale],
+		periods: ChainRules.Conditions.small_periods[ChainRules.Conditions.locale].concat([[{en: 'All time', ru: 'За все время'}[ChainRules.Conditions.locale], 'all']]),
 		values: () => ChainRules.chains
 	},
 	chain_opened: {
@@ -334,7 +333,7 @@ ChainRules.Conditions.extend_properties = Object.assign(ChainRules.Conditions.ex
 	current_chain_received: {
 		group: 'marketing',
 		type: 'boolean',
-		periods: ChainRules.Conditions.small_periods[ChainRules.Conditions.locale],
+		periods: ChainRules.Conditions.small_periods[ChainRules.Conditions.locale].concat([[{en: 'All time', ru: 'За все время'}[ChainRules.Conditions.locale], 'all']]),
 	},
 	current_chain_opened: {
 		group: 'marketing',
