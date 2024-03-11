@@ -29,6 +29,7 @@ function ChainRules(id, selector, modal_selector, readonly, on_load, shop_id, pe
 	}
 
 	this.changed = false;
+
 	this.container.addEventListener('rules:change', () => {
 		this.changed = true;
 		this.isValid();
