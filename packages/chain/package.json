@@ -8,24 +8,25 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --progress --port 8081",
-    "sass": "./node_modules/sass/sass.js -I ./node_modules --no-source-map src/chains.scss ./css/chains.css",
-    "build": "./node_modules/.bin/webpack --mode=production",
+    "sass": "sass -I ./node_modules --no-source-map src/chains.scss ./css/chains.css",
+    "build": "webpack --mode=production",
+    "watch": "webpack --watch",
     "prepack": "run sass && run build && mkdir -p dist/scss && cp -r src/*.scss dist/scss && cp -r css dist",
     "changelog": "standard-changelog --commit-path ."
   },
   "author": "Sergey Odintsov <nixx.dj@gmail.com> (https://github.com/PNixx)",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
-    "@babel/plugin-transform-modules-umd": "^7.16.7",
-    "@babel/preset-env": "^7.16.11",
-    "babel-loader": "^8.2.3",
+    "@babel/cli": "7.24.7",
+    "@babel/core": "7.24.7",
+    "@babel/plugin-transform-modules-umd": "7.24.7",
+    "@babel/preset-env": "7.24.7",
+    "babel-loader": "9.1.3",
     "sass": "~1.49.9",
-    "standard-changelog": "5.0.0",
-    "webpack": "5.90.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "standard-changelog": "6.0.0",
+    "webpack": "5.92.1",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "5.0.4"
   },
   "dependencies": {
     "@rees46/segmentator-library": "workspace:*"
