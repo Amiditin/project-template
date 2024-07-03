@@ -24,7 +24,7 @@ function ChainRules(id, selector, modal_selector, readonly, on_load, shop_id, pe
 	this.container = helper.createElementFromHTML('<div class="module"></div>');
 	this.doc.appendChild(this.container);
 
-	if( !this.readonly ) {
+	if (!this.readonly) {
 		this.modal = new ChainModal(modal_selector, this);
 	}
 
