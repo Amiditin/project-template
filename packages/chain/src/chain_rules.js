@@ -42,11 +42,11 @@ function ChainRules(id, selector, modal_selector, readonly, on_load, shop_id, pe
 		return null;
 	});
 
-	//Проверяем определен ли метод для ссылки на шаблон
-	if( !ChainRules.template_url ) {
+	/** Проверяем определен ли метод для ссылки на шаблон */
+	if (!ChainRules.template_url) {
 		throw 'Please, define `ChainRules.template_url` for redirect to edit chain template.\nUse `{{shop_id}}`, `{{chain_id}}` and `{{template_id}}` in the path.'
 	}
-	if( !ChainRules.template_preview ) {
+	if (!ChainRules.template_preview) {
 		throw 'Please, define `ChainRules.template_preview` for preview chain template.\nUse `{{shop_id}}`, `{{template_id}}` in the path.'
 	}
 
