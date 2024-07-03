@@ -1147,8 +1147,11 @@ ChainBlock.prototype.buildEvent = function() {
  * Строит блок условия
  */
 ChainBlock.prototype.buildCondition = function() {
+	const multipleValue = CONDITION_LABELS[ChainRules.Conditions.locale].multiple;
+	const multiple = typeof multipleValue === 'function' ? multipleValue : multipleValue;
+
 	return this.buildConditionTemplate(
-		conditions => conditions.length === 1 ? ChainRules.Conditions.label_properties[ChainRules.Conditions.locale][conditions[0]] : CONDITION_LABELS[ChainRules.Conditions.locale].multiple,
+		conditions => conditions.length === 1 ? ChainRules.Conditions.label_properties[ChainRules.Conditions.locale][conditions[0]] : multiple,
 		'editCondition',
 		() => this.data.case.length > 1 ? CONDITION_LABELS[ChainRules.Conditions.locale].else : CONDITION_LABELS[ChainRules.Conditions.locale].no,
 		i => this.data.case.length > 1 ? (CONDITION_LABELS[ChainRules.Conditions.locale].option + ' ' + (i + 1)) : CONDITION_LABELS[ChainRules.Conditions.locale].yes,
@@ -1640,17 +1643,14 @@ ChainModal.prototype.editDelay = function(value, callback) {
  * @param {Function} callback
  */
 ChainModal.prototype.editCondition = function(values, callback) {
-	let body = helper.createElementFromHTML('<div class="r-conditions"></div>');
-	let conditions = new ChainRules.Conditions(body);
+	const body = helper.createElementFromHTML('<div class="r-conditions"></div>');
+	const conditions = new ChainRules.Conditions(body);
 
 	this.submit.onclick = function() {
 		callback(conditions.getData());
 		this.hide();
 	}.bind(this);
 
-	// if( this.modal.hasClass('show') ) {
-		// this.hide();
-	// }
 	this.show(LABELS[ChainRules.Conditions.locale].condition_title, body, true)
 	conditions.parse(values || [[{}]]);
 };
