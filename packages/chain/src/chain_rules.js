@@ -24,7 +24,7 @@ function ChainRules(id, selector, modal_selector, readonly, on_load, shop_id, pe
 	this.container = helper.createElementFromHTML('<div class="module"></div>');
 	this.doc.appendChild(this.container);
 
-	if( !this.readonly ) {
+	if (!this.readonly) {
 		this.modal = new ChainModal(modal_selector, this);
 	}
 
@@ -36,7 +36,7 @@ function ChainRules(id, selector, modal_selector, readonly, on_load, shop_id, pe
 	});
 
 	window.addEventListener('beforeunload', e => {
-		if( this.changed ) {
+		if (this.changed) {
 			e.returnValue = 'You are about to leave the editor without saving your changes. All your changes will be lost. Are you sure?';
 		}
 		return null;
