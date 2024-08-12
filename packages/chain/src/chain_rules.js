@@ -1,4 +1,5 @@
-import helper from '@rees46/segmentator-library/src/helper';
+import helper from '@rees46/segmentator-library/helper';
+import Conditions from '@rees46/segmentator-library/conditions'
 
 /**
  * Блок условий цепочки
@@ -54,7 +55,7 @@ function ChainRules(id, selector, modal_selector, readonly, on_load, shop_id, pe
 	ChainRules.Conditions.shop_id = this.shop_id;
 	ChainRules.Conditions.fetchSegmentatorData().then(() => this.fetchChain()).then(on_load);
 }
-ChainRules.Conditions = require('@rees46/segmentator-library/src/conditions').default;
+ChainRules.Conditions = Conditions;
 
 /**
  * Ссылка на редактирование шаблона
