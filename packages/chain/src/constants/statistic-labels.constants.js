@@ -1,0 +1,42 @@
+export const STATISTIC_LABELS = {
+  en: {
+    sent: 'Sent',
+    open: 'Opened',
+    click: 'Clicked',
+    bounce: 'Bounced',
+    unsubscribe: 'Unsubscribed',
+    purchase: 'Purchased',
+    complain: 'Spam complain',
+    hard_bounced: 'Hard bounce',
+    soft_bounced: 'Soft bounce',
+    opened: 'Opened',
+    clicked: 'Clicked',
+    bounced: 'Bounced',
+    unsubscribed: 'Unsubscribed',
+    purchased: 'Purchased',
+    revenue: 'Revenue',
+    complained: 'Spam complained',
+    closed: 'Closed',
+    hbq_spam: 'Postmaster spam'
+  },
+  ru: {
+    sent: 'Отправлено',
+    open: 'Opened',
+    click: 'Clicked',
+    bounce: 'Bounced',
+    unsubscribe: 'Unsubscribed',
+    purchase: 'Purchased',
+    complain: 'Spam complain',
+    hard_bounced: 'Hard bounce',
+    soft_bounced: 'Soft bounce',
+    opened: 'Открыто',
+    clicked: 'С переходами',
+    bounced: 'Отклонено',
+    unsubscribed: 'Отписались',
+    purchased: 'С покупками',
+    revenue: 'Выручка',
+    complained: 'Жалобы на спам',
+    closed: 'Закрыто',
+    hbq_spam: 'Postmaster spam'
+  }
+};
