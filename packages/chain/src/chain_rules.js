@@ -282,6 +282,19 @@ ChainRules.prototype.toJSON = function () {
 };
 
 /**
+ * Добавляет мерчантов в настройки
+ */
+ChainRules.prototype.addMerchants = function() {
+  ChainRules.Conditions.extend_properties.item_merchant = {
+    group: 'product',
+    type: 'select',
+    operators: 'yesNo',
+    multiple: true,
+    values: ChainRules.Conditions.merchants
+  };
+};
+
+/**
  * Получает данные цепочки
  */
 ChainRules.prototype.fetchChain = function () {
@@ -314,6 +327,8 @@ ChainRules.prototype.fetchChain = function () {
       ChainRules[v] = r.data.chain[v];
     }
     this.render(r.data.chain.rules);
+    this.addMerchants();
+
     return true;
   });
 };
