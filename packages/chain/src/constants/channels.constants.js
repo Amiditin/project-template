@@ -14,5 +14,5 @@ export const CHANNELS = {
     sms: 'СМС',
     telegram: 'Telegram',
     whatsapp: 'WhatsApp',
-  }
+  },
 };
