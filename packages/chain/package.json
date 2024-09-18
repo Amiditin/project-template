@@ -1,6 +1,6 @@
 {
   "name": "@rees46/chain-library",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "REES46 Chain library",
   "main": "index.js",
   "type": "module",
