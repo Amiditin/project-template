@@ -545,6 +545,7 @@ ChainModule.prototype.addCondition = function (block) {
  */
 ChainModule.prototype.addABTest = function (block) {
   let index = this.blocks.indexOf(block);
+
   if (index === -1) {
     index = this.blocks.length;
   }
