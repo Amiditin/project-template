@@ -1,3 +1,11 @@
+## [2.1.9](https://github.com/rees46/web/compare/@rees46/chain-library-v2.1.4...@rees46/chain-library-2.1.9) (2024-09-18)
+
+
+
+## [2.1.8](https://github.com/rees46/web/compare/@rees46/chain-library-v2.1.4...@rees46/chain-library-2.1.8) (2024-09-18)
+
+
+
 ## [2.1.6](https://github.com/rees46/web/compare/@rees46/chain-library-v2.1.4...@rees46/chain-library-2.1.6) (2024-09-18)
 
 
