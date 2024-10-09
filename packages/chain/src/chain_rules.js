@@ -552,8 +552,11 @@ ChainModule.prototype.addABTest = function (block) {
   let cutting = this.getData().slice(index).filter(function (v) {
     return v.type !== 'event';
   });
+
+  const createdAt = new Date().toISOString();
+
   this.blocks.splice(index);
-  this.append({type: 'ab_test', a: cutting, b: []});
+  this.append({type: 'ab_test', created_at: createdAt, a: cutting, b: []});
   this.root.onUpdate();
   this.root.modal.hide();
 };
@@ -1128,16 +1131,29 @@ ChainBlock.prototype.buildABTest = function () {
   let block = helper.createElementFromHTML('<div class="module__item"></div>');
   let html = helper.createElementFromHTML('<div class="module__item"></div>');
 
+  const createdAt = this.data.created_at
+    ? new Date(this.data.created_at).toLocaleDateString('ru-RU')
+    : '';
+
   //Left
   let left = helper.createElementFromHTML('<div class="condition-variant left" data-variant="A"></div>');
   this.left_module = new ChainModule(this.root, left, this.data.a, 'a');
   this.left_module.render();
 
   //Center
-  let center = helper.createElementFromHTML('<div class="module__item"></div>'),
-    box = helper.createElementFromHTML('<div class="module__block ' + this.data.type + '"></div>'),
-    text = helper.createElementFromHTML('<div class="block__text">' + LABELS[ChainRules.Conditions.locale].ab_test + '</div>'),
-    inner = helper.createElementFromHTML('<div class="' + this.data.type + '__inner"></div>');
+  const center = helper.createElementFromHTML('<div class="module__item"></div>');
+  const box = helper.createElementFromHTML(
+    '<div class="module__block ' + this.data.type + '"></div>'
+  );
+  const text = helper.createElementFromHTML(
+    '<div class="block__text">' +
+      LABELS[ChainRules.Conditions.locale].ab_test +
+      ' ' +
+      createdAt +
+      '</div>'
+  );
+  const inner = helper.createElementFromHTML('<div class="' + this.data.type + '__inner"></div>');
+  
   center.appendChild(box);
   box.appendChild(inner);
   inner.appendChild(this.buildBlockTitle('condition', LABELS[ChainRules.Conditions.locale].ab_test_title));
