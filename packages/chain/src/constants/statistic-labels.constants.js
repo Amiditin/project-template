@@ -17,7 +17,17 @@ export const STATISTIC_LABELS = {
     revenue: 'Revenue',
     complained: 'Spam complained',
     closed: 'Closed',
-    hbq_spam: 'Postmaster spam'
+    hbq_spam: 'Postmaster spam',
+    sent_uniq: 'Sent unique',
+    accepted: 'Accepted / Showed',
+    opened_uniq: 'Opened unique',
+    clicked_uniq: 'Clicked unique',
+    purchased_uniq: 'Purchased unique',
+    hard_bounced_uniq: 'Hard bounce unique',
+    diagnostic_code: 'Error message',
+    message_type: 'Message type',
+    offline_revenue: 'Offline revenue',
+    offline_orders: 'Offline orders',
   },
   ru: {
     sent: 'Отправлено',
@@ -37,6 +47,16 @@ export const STATISTIC_LABELS = {
     revenue: 'Выручка',
     complained: 'Жалобы на спам',
     closed: 'Закрыто',
-    hbq_spam: 'Postmaster spam'
+    hbq_spam: 'Postmaster spam',
+    sent_uniq: 'Уникальных отправок',
+    accepted: 'Доставлено / Показано',
+    opened_uniq: 'Уникальных открытий',
+    clicked_uniq: 'Уникальных переход',
+    purchased_uniq: 'Уникальных покупок',
+    hard_bounced_uniq: 'Уникальных hard bounce',
+    diagnostic_code: 'Сообщение об ошибке',
+    message_type: 'Тип сообщения',
+    offline_revenue: 'Оффлайн выручка',
+    offline_orders: 'Оффлайн заказы',
   }
 };
