@@ -20,7 +20,7 @@ export const LABEL_PROPERTIES_EN = {
   current_chain_clicked: 'Clicked on the last message from this chain',
   current_chain_purchased: 'Bought from the last post in this chain',
   user_received_promocode: 'User received promocode',
-  user_used_promocode: 'User used promocode'
+  user_used_promocode: 'User used promocode',
 };
 export const LABEL_PROPERTIES_RU = {
   segment: 'Пользовательский сегмент',
@@ -43,5 +43,5 @@ export const LABEL_PROPERTIES_RU = {
   current_chain_clicked: 'Кликнул в последнее сообщение из этой цепочки',
   current_chain_purchased: 'Купил из последнего сообщения этой цепочки',
   user_received_promocode: 'Пользователь получил промокод',
-  user_used_promocode: 'Пользователь применил промокод'
+  user_used_promocode: 'Пользователь применил промокод',
 };
