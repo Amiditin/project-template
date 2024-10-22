@@ -21,7 +21,9 @@ export const LABEL_PROPERTIES_EN = {
   current_chain_purchased: 'Bought from the last post in this chain',
   user_received_promocode: 'User received promocode',
   user_used_promocode: 'User used promocode',
-  received_chain_from_channel: 'Received chain message in the channel'
+  received_chain_from_channel: 'Received chain message in the channel',
+  cart_count: 'Number of products in cart',
+  cart_sum: 'Sum of product prices in cart'
 };
 export const LABEL_PROPERTIES_RU = {
   segment: 'Пользовательский сегмент',
@@ -45,5 +47,7 @@ export const LABEL_PROPERTIES_RU = {
   current_chain_purchased: 'Купил из последнего сообщения этой цепочки',
   user_received_promocode: 'Пользователь получил промокод',
   user_used_promocode: 'Пользователь применил промокод',
-  received_chain_from_channel: 'Получал триггерное сообщение в канале'
+  received_chain_from_channel: 'Получал триггерное сообщение в канале',
+  cart_count: 'Количество товаров в корзине',
+  cart_sum: 'Сумма цен товаров в корзине'
 };
