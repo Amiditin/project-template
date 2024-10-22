@@ -21,6 +21,7 @@ export const LABEL_PROPERTIES_EN = {
   current_chain_purchased: 'Bought from the last post in this chain',
   user_received_promocode: 'User received promocode',
   user_used_promocode: 'User used promocode',
+  received_chain_from_channel: 'Received chain message in the channel'
 };
 export const LABEL_PROPERTIES_RU = {
   segment: 'Пользовательский сегмент',
@@ -44,4 +45,5 @@ export const LABEL_PROPERTIES_RU = {
   current_chain_purchased: 'Купил из последнего сообщения этой цепочки',
   user_received_promocode: 'Пользователь получил промокод',
   user_used_promocode: 'Пользователь применил промокод',
+  received_chain_from_channel: 'Получал триггерное сообщение в канале'
 };

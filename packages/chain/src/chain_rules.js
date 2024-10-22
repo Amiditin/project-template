@@ -94,6 +94,16 @@ ChainRules.chains = {};
 
 //Расширяем настройки
 ChainRules.Conditions.extend_properties = Object.assign(ChainRules.Conditions.extend_properties, {
+  received_chain_from_channel: {
+    group: 'marketing',
+    type: 'select',
+    multiple: true,
+    values: ChainRules.Conditions.channels[ChainRules.Conditions.locale],
+    periods: ChainRules.Conditions.small_periods[ChainRules.Conditions.locale].concat([[{
+      en: '3 months',
+      ru: '3 месяца'
+    }[ChainRules.Conditions.locale], 90]]),
+  },
   add_product_to_cart: {
     group: 'actions',
     type: 'boolean',
