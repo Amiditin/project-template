@@ -94,6 +94,18 @@ ChainRules.chains = {};
 
 //Расширяем настройки
 ChainRules.Conditions.extend_properties = Object.assign(ChainRules.Conditions.extend_properties, {
+  cart_count: {
+    group: 'actions',
+    type: 'input',
+    operators: 'allNumber',
+    properties: { type: 'number', min: 0, step: 1 },
+  },
+  cart_sum: {
+    group: 'actions',
+    type: 'input',
+    operators: 'allNumber',
+    properties: { type: 'number', min: 0, step: 1 },
+  },
   received_chain_from_channel: {
     group: 'marketing',
     type: 'select',
