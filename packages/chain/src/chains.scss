@@ -17,6 +17,7 @@ $gray-700: #868e96 !default;
 
 $orange: #fd7c29 !default;
 $grape: #c145d7 !default;
+$pink: #EC4899 !default;
 $cyan: #06B6D4 !default;
 
 $shift: 8px;
@@ -163,6 +164,9 @@ $condition-variant-padding: 10px;
       }
       &.delay {
         @include block-color($orange);
+      }
+      &.dynamic_delay {
+        @include block-color($pink);
       }
       &.message {
         @include block-color($grape);

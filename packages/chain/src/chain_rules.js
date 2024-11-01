@@ -532,9 +532,24 @@ ChainModule.prototype.addDelay = function (block) {
     index = this.blocks.length;
   }
   this.root.modal.editDelay('86400', function (value) {
-    this.append({type: 'delay', delay: value, id: this.guid()}, index);
+    this.append({type: 'delay', delay: value, delay_type: 'static', id: this.guid()}, index);
     this.root.onUpdate();
-  }.bind(this));
+  }.bind(this), LABELS[ChainRules.Conditions.locale].delay_title);
+};
+
+/**
+ * Добавление блока динамической паузы
+ * @param {ChainBlock} block
+ */
+ChainModule.prototype.addDynamicDelay = function (block) {
+  let index = this.blocks.indexOf(block);
+  if (index === -1) {
+    index = this.blocks.length;
+  }
+  this.root.modal.editDelay('86400', function (value) {
+    this.append({type: 'dynamic_delay', delay: value, delay_type: 'dynamic', id: this.guid()}, index);
+    this.root.onUpdate();
+  }.bind(this), LABELS[ChainRules.Conditions.locale].dynamic_delay_title);
 };
 
 /**
@@ -757,6 +772,10 @@ ChainBlock.prototype.buildBlock = function () {
       this.block = this.buildDelay();
       break;
 
+    case 'dynamic_delay':
+      this.block = this.buildDynamicDelay();
+      break;
+
     case 'message':
       this.block = this.buildMessage();
       break;
@@ -794,14 +813,17 @@ ChainBlock.prototype.buildBlock = function () {
 ChainBlock.prototype.choiceAddAction = function () {
 
   //Строим контент
-  let delay = helper.createElementFromHTML('<a class="btn btn-square btn-delay"></a>'),
-    condition = helper.createElementFromHTML('<a class="btn btn-square btn-condition"></a>'),
-    message = helper.createElementFromHTML('<a class="btn btn-square"></a>'),
-    ab_test = helper.createElementFromHTML('<a class="btn btn-square btn-ab-test"></a>'),
-    http = helper.createElementFromHTML('<a class="btn btn-square btn-http"></a>');
+  const delay = helper.createElementFromHTML('<a class="btn btn-square btn-delay"></a>');
+  const dynamicDelay = helper.createElementFromHTML('<a class="btn btn-square btn-dynamic-delay"></a>');
+  const condition = helper.createElementFromHTML('<a class="btn btn-square btn-condition"></a>');
+  const message = helper.createElementFromHTML('<a class="btn btn-square"></a>');
+  const ab_test = helper.createElementFromHTML('<a class="btn btn-square btn-ab-test"></a>');
+  const http = helper.createElementFromHTML('<a class="btn btn-square btn-http"></a>');
 
   delay.innerHTML = '<i class="r46-icon r-size-32 mb-2 mt-2">pause_32</i><div>' + LABELS[ChainRules.Conditions.locale].delay + '</div>';
   delay.addEventListener('click', this.module.addDelay.bind(this.module, this));
+  dynamicDelay.innerHTML = '<i class="r46-icon r-size-32 mb-2 mt-2">dynamic_pause_32</i><div>' + LABELS[ChainRules.Conditions.locale].dynamic_delay + '</div>';
+  dynamicDelay.addEventListener('click', this.module.addDynamicDelay.bind(this.module, this));
   condition.innerHTML = '<i class="r46-icon r-size-32 mb-2 mt-2">condition_32</i><div>' + LABELS[ChainRules.Conditions.locale].condition + '</div>';
   condition.addEventListener('click', this.module.addCondition.bind(this.module, this));
   message.innerHTML = '<i class="r46-icon r-size-32 mb-2 mt-2">email_32</i><div>' + LABELS[ChainRules.Conditions.locale].message + '</div>';
@@ -813,6 +835,13 @@ ChainBlock.prototype.choiceAddAction = function () {
 
   let block = helper.createElementFromHTML('<div class="modal_choice_block"></div>');
   block.appendChild(delay);
+
+  const currentEvent = this.module.root.module.blocks.find(block => block.data.type === 'event');
+
+  if (currentEvent && currentEvent.data.event === 'purchase') {
+    block.appendChild(dynamicDelay);
+  }
+
   block.appendChild(condition);
   block.appendChild(message);
   block.appendChild(ab_test);
@@ -832,7 +861,10 @@ ChainBlock.prototype.onUpdate = function () {
       this.block.querySelector('.block__text span').textContent = this.secondsToStr(this.data.delay * 1);
       this.isValid();
       break;
-
+    case 'dynamic_delay':
+      this.block.querySelector('.block__text span').textContent = this.secondsToStr(this.data.delay * 1);
+      this.isValid();
+      break;
     case 'message':
       this.block.querySelector('.block__text span').textContent = ChainRules.channels[ChainRules.Conditions.locale][this.data.channel];
       this.isValid();
@@ -897,6 +929,13 @@ ChainBlock.prototype.buildTemplateAction = function (type, callback) {
  */
 ChainBlock.prototype.buildDelay = function () {
   return this.buildBlockTemplate(this.data.type, 'pause', LABELS[ChainRules.Conditions.locale].delay, this.secondsToStr(this.data.delay * 1));
+};
+
+/**
+ * Строит блок динамической паузы
+ */
+ChainBlock.prototype.buildDynamicDelay = function () {
+  return this.buildBlockTemplate(this.data.type, 'dynamic_pause', LABELS[ChainRules.Conditions.locale].dynamic_delay, this.secondsToStr(this.data.delay * 1));
 };
 
 /**
@@ -1228,7 +1267,14 @@ ChainBlock.prototype.edit = function () {
         this.data.delay = value;
         this.onUpdate();
         this.root.container.dispatchEvent(new Event('rules:change', {bubbles: true}));
-      });
+      }, LABELS[ChainRules.Conditions.locale].delay_title);
+      break;
+    case 'dynamic_delay':
+      this.root.modal.editDelay(this.data.delay, value => {
+        this.data.delay = value;
+        this.onUpdate();
+        this.root.container.dispatchEvent(new Event('rules:change', {bubbles: true}));
+      }, LABELS[ChainRules.Conditions.locale].dynamic_delay_title);
       break;
     case 'message':
       this.root.modal.editMessage(this.data.channel, this.data.template_id, (channel, template_id) => {
@@ -1496,8 +1542,9 @@ ChainModal.prototype.editEvent = function (event, value, filters, labels, ignore
  * Редактирование действия
  * @param {String} value
  * @param {Function} callback
+ * @param {String} title
  */
-ChainModal.prototype.editDelay = function (value, callback) {
+ChainModal.prototype.editDelay = function (value, callback, title = '') {
   let v = ChainBlock.prototype.secondsToStr(parseInt(value), true);
   let body = helper.createElementFromHTML('<div class="form-group form-action"></div>'),
     day = helper.createElementFromHTML('<input required="required" type="number" min="0" step="1" max="360" id="title_day_block" class="form-control">'),
@@ -1532,7 +1579,7 @@ ChainModal.prototype.editDelay = function (value, callback) {
   // if( this.modal.hasClass('show') ) {
   // this.hide();
   // }
-  this.show(LABELS[ChainRules.Conditions.locale].delay_title, body, true);
+  this.show(title, body, true);
 
   if (typeof $ !== 'undefined' && typeof $.fn !== 'undefined' && typeof $.fn.custom_number_input !== 'undefined') {
     $(day).custom_number_input({wrapper: 'mr-2'});
