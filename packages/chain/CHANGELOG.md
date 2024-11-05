@@ -1,3 +1,21 @@
+## [2.1.18](https://github.com/rees46/web/compare/@rees46/chain-library-v2.1.17...@rees46/chain-library-2.1.18) (2024-11-05)
+
+
+### Bug Fixes
+
+* chain version ([#994](https://github.com/rees46/web/issues/994)) ([059249a](https://github.com/rees46/web/commit/059249a43d7441440d4ccf7fe8b5bf9ae20f4e2a))
+
+
+### Features
+
+* add changes from stage ([#1002](https://github.com/rees46/web/issues/1002)) ([49e916e](https://github.com/rees46/web/commit/49e916e279b478c349cefe99e3994b4c0e7dea02))
+* add changes from stage ([#1004](https://github.com/rees46/web/issues/1004)) ([3de0200](https://github.com/rees46/web/commit/3de0200f309bbd0c5caa6b944a6674c53ed64ec0))
+* add changes from stage ([#1036](https://github.com/rees46/web/issues/1036)) ([0a8ad1b](https://github.com/rees46/web/commit/0a8ad1bd7c2bf11f77587f7e80f7e20cefb6125f))
+* add changes from stage ([#1048](https://github.com/rees46/web/issues/1048)) ([0bee180](https://github.com/rees46/web/commit/0bee18070f1c01315e9731cfa3b78cb2640b6b4b))
+* add changes from stage ([#992](https://github.com/rees46/web/issues/992)) ([ef9f7c3](https://github.com/rees46/web/commit/ef9f7c390d115935f45658bffc72480183d637ed))
+
+
+
 ## [2.1.17](https://github.com/rees46/web/compare/@rees46/chain-library-v2.1.15...@rees46/chain-library-2.1.17) (2024-11-05)
 
 
