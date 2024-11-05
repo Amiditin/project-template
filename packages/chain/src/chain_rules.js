@@ -525,32 +525,19 @@ ChainModule.prototype.updateCenterPositions = function () {
 /**
  * Добавление блока действия
  * @param {ChainBlock} block
+ * @param {'static' | 'dynamic'} delayType
  */
-ChainModule.prototype.addDelay = function (block) {
+ChainModule.prototype.addDelay = function (block, delayType = 'static') {
   let index = this.blocks.indexOf(block);
   if (index === -1) {
     index = this.blocks.length;
   }
   this.root.modal.editDelay('86400', function (value) {
-    this.append({type: 'delay', delay: value, delay_type: 'static', id: this.guid()}, index);
+    this.append({type: 'delay', delay: value, delay_type: delayType, id: this.guid()}, index);
     this.root.onUpdate();
-  }.bind(this), LABELS[ChainRules.Conditions.locale].delay_title);
+  }.bind(this), LABELS[ChainRules.Conditions.locale][delayType === 'dynamic' ? 'dynamic_delay_title' : 'delay_title']);
 };
 
-/**
- * Добавление блока динамической паузы
- * @param {ChainBlock} block
- */
-ChainModule.prototype.addDynamicDelay = function (block) {
-  let index = this.blocks.indexOf(block);
-  if (index === -1) {
-    index = this.blocks.length;
-  }
-  this.root.modal.editDelay('86400', function (value) {
-    this.append({type: 'dynamic_delay', delay: value, delay_type: 'dynamic', id: this.guid()}, index);
-    this.root.onUpdate();
-  }.bind(this), LABELS[ChainRules.Conditions.locale].dynamic_delay_title);
-};
 
 /**
  * Добавление блока условия
@@ -772,10 +759,6 @@ ChainBlock.prototype.buildBlock = function () {
       this.block = this.buildDelay();
       break;
 
-    case 'dynamic_delay':
-      this.block = this.buildDynamicDelay();
-      break;
-
     case 'message':
       this.block = this.buildMessage();
       break;
@@ -821,9 +804,9 @@ ChainBlock.prototype.choiceAddAction = function () {
   const http = helper.createElementFromHTML('<a class="btn btn-square btn-http"></a>');
 
   delay.innerHTML = '<i class="r46-icon r-size-32 mb-2 mt-2">pause_32</i><div>' + LABELS[ChainRules.Conditions.locale].delay + '</div>';
-  delay.addEventListener('click', this.module.addDelay.bind(this.module, this));
+  delay.addEventListener('click', this.module.addDelay.bind(this.module, this, 'static'));
   dynamicDelay.innerHTML = '<i class="r46-icon r-size-32 mb-2 mt-2">dynamic_pause_32</i><div>' + LABELS[ChainRules.Conditions.locale].dynamic_delay + '</div>';
-  dynamicDelay.addEventListener('click', this.module.addDynamicDelay.bind(this.module, this));
+  dynamicDelay.addEventListener('click', this.module.addDelay.bind(this.module, this, 'dynamic'));
   condition.innerHTML = '<i class="r46-icon r-size-32 mb-2 mt-2">condition_32</i><div>' + LABELS[ChainRules.Conditions.locale].condition + '</div>';
   condition.addEventListener('click', this.module.addCondition.bind(this.module, this));
   message.innerHTML = '<i class="r46-icon r-size-32 mb-2 mt-2">email_32</i><div>' + LABELS[ChainRules.Conditions.locale].message + '</div>';
@@ -835,7 +818,6 @@ ChainBlock.prototype.choiceAddAction = function () {
 
   let block = helper.createElementFromHTML('<div class="modal_choice_block"></div>');
   block.appendChild(delay);
-
   const currentEvent = this.module.root.module.blocks.find(block => block.data.type === 'event');
 
   if (currentEvent && currentEvent.data.event === 'purchase') {
@@ -858,10 +840,6 @@ ChainBlock.prototype.choiceAddAction = function () {
 ChainBlock.prototype.onUpdate = function () {
   switch (this.data.type) {
     case 'delay':
-      this.block.querySelector('.block__text span').textContent = this.secondsToStr(this.data.delay * 1);
-      this.isValid();
-      break;
-    case 'dynamic_delay':
       this.block.querySelector('.block__text span').textContent = this.secondsToStr(this.data.delay * 1);
       this.isValid();
       break;
@@ -928,14 +906,10 @@ ChainBlock.prototype.buildTemplateAction = function (type, callback) {
  * Строит блок задержки
  */
 ChainBlock.prototype.buildDelay = function () {
-  return this.buildBlockTemplate(this.data.type, 'pause', LABELS[ChainRules.Conditions.locale].delay, this.secondsToStr(this.data.delay * 1));
-};
-
-/**
- * Строит блок динамической паузы
- */
-ChainBlock.prototype.buildDynamicDelay = function () {
-  return this.buildBlockTemplate(this.data.type, 'dynamic_pause', LABELS[ChainRules.Conditions.locale].dynamic_delay, this.secondsToStr(this.data.delay * 1));
+  const delay = this.data?.delay_type  === 'dynamic' ? 'dynamic_delay' : 'delay';
+  const icon = delay === 'dynamic_delay' ? 'dynamic_pause' : 'pause';
+  const title = LABELS[ChainRules.Conditions.locale][delay];
+  return this.buildBlockTemplate(delay, icon, title, this.secondsToStr(this.data.delay * 1));
 };
 
 /**
@@ -1260,21 +1234,14 @@ ChainBlock.prototype.buildEmptyAlgorithm = function () {
  */
 ChainBlock.prototype.edit = function () {
   this.setTargetBlock();
-
   switch (this.data.type) {
     case 'delay':
-      this.root.modal.editDelay(this.data.delay, value => {
+      const delayType = this.data?.delay_type || 'static';
+      this.root.modal.editDelay(this.data.delay, (value) => {
         this.data.delay = value;
         this.onUpdate();
-        this.root.container.dispatchEvent(new Event('rules:change', {bubbles: true}));
-      }, LABELS[ChainRules.Conditions.locale].delay_title);
-      break;
-    case 'dynamic_delay':
-      this.root.modal.editDelay(this.data.delay, value => {
-        this.data.delay = value;
-        this.onUpdate();
-        this.root.container.dispatchEvent(new Event('rules:change', {bubbles: true}));
-      }, LABELS[ChainRules.Conditions.locale].dynamic_delay_title);
+        this.root.container.dispatchEvent(new Event('rules:change', { bubbles: true }));
+      }, LABELS[ChainRules.Conditions.locale][delayType === 'dynamic' ? 'dynamic_delay_title' : 'delay_title']);
       break;
     case 'message':
       this.root.modal.editMessage(this.data.channel, this.data.template_id, (channel, template_id) => {
