@@ -282,7 +282,3 @@
 * rees46/development/issues/194 chain add period for rules ([c567d43](https://github.com/rees46/web/commit/c567d43dba4f7d0f6e4e60a6a2438720f840ef95))
 * rees46/development/issues/316 chain all period ([79e6493](https://github.com/rees46/web/commit/79e6493696c05a903a2eef3158b09de91a60390d))
 * standard changelog ([01f5b12](https://github.com/rees46/web/commit/01f5b12060fdd5bac64e1e616a6ac5a5a4f9f03e))
-
-
-
-
