@@ -60,7 +60,7 @@ function ChainRules(id, selector, modal_selector, readonly, on_load, shop_id, pe
     throw 'Please, define `ChainRules.template_preview` for preview chain template.\nUse `{{shop_id}}`, `{{template_id}}` in the path.';
   }
 
-  //Запрашиваем цепочку
+  /** Запрашиваем цепочку */
   ChainRules.Conditions.shop_id = this.shop_id;
   ChainRules.Conditions.fetchSegmentatorData().then(() => this.fetchChain()).then(on_load);
 }
@@ -1188,7 +1188,7 @@ ChainBlock.prototype.buildABTest = function () {
       '</div>'
   );
   const inner = helper.createElementFromHTML('<div class="' + this.data.type + '__inner"></div>');
-  
+
   center.appendChild(box);
   box.appendChild(inner);
   inner.appendChild(this.buildBlockTitle('condition', LABELS[ChainRules.Conditions.locale].ab_test_title));

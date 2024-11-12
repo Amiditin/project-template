@@ -7,7 +7,7 @@ Add to `package.json`:
 ```json
 {
   "dependencies": {
-    "@rees46/chain-library": "bitbucket:mkechinov/npm-chain-library"
+    "@rees46/chain-library": "latest"
   }
 }
 ```
