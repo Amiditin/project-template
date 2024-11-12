@@ -1,4 +1,4 @@
-@import url(https://app.rees46.com/assets/r46_icon.css) screen;
+@import url(/assets/r46_icon.css) screen;
 .r-chain-rules {
   padding: 20px;
 }
@@ -206,6 +206,19 @@
 }
 .r-chain-rules .module__block.delay.selected .block__text {
   color: #e25a02;
+}
+.r-chain-rules .module__block.dynamic_delay {
+  background: #EC4899;
+}
+.r-chain-rules .module__block.dynamic_delay .block__text {
+  color: #EC4899;
+}
+.r-chain-rules .module__block.dynamic_delay.selected {
+  background: #db1778;
+  box-shadow: 0 0 0 3px rgba(235, 58, 145, 0.25);
+}
+.r-chain-rules .module__block.dynamic_delay.selected .block__text {
+  color: #db1778;
 }
 .r-chain-rules .module__block.message {
   background: #c145d7;
