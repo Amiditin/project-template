@@ -28,6 +28,9 @@ export const STATISTIC_LABELS = {
     message_type: 'Message type',
     offline_revenue: 'Offline revenue',
     offline_orders: 'Offline orders',
+    revenue_total: 'Total revenue',
+    orders: 'Not unique orders',
+    orders_total: 'Total not unique orders'
   },
   ru: {
     sent: 'Отправлено',
@@ -58,5 +61,8 @@ export const STATISTIC_LABELS = {
     message_type: 'Тип сообщения',
     offline_revenue: 'Оффлайн выручка',
     offline_orders: 'Оффлайн заказы',
+    revenue_total: 'Общая выручка',
+    orders: 'Количество не уникальных заказов',
+    orders_total: 'Общее количество не уникальных заказов'
   }
 };
