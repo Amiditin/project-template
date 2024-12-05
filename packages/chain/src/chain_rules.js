@@ -1013,7 +1013,7 @@ ChainBlock.prototype.buildMessage = function () {
     $(block).data('title', function () {
       let tooltip = $('<div class="d-flex flex-column" style="min-width: 160px"></div>');
       for (var v in ChainRules.statistics[this.data.id]) {
-        tooltip.append('<div class="d-flex"><div class="text-nowrap">' + ChainRules.statistic_labels[ChainRules.Conditions.locale][v] + '</div><div class="flex-fill text-right ml-2 r-weight-600">' + ChainRules.statistics[this.data.id][v] + '</div></div>');
+        tooltip.append('<div class="d-flex"><div>' + ChainRules.statistic_labels[ChainRules.Conditions.locale][v] + '</div><div class="flex-fill text-right ml-2 r-weight-600">' + ChainRules.statistics[this.data.id][v] + '</div></div>');
       }
       return tooltip.html();
     }.bind(this)).tooltip({container: 'body', toggle: 'tooltip', html: true, placement: 'bottom'});
@@ -1076,7 +1076,7 @@ ChainBlock.prototype.buildHttp = function () {
       let id = item.getAttribute('id');
       $(item).data('title', () => {
         let tooltip = $('<div class="d-flex flex-column" style="min-width: 160px"></div>');
-        tooltip.append('<div class="d-flex"><div class="text-nowrap">' + ChainRules.statistic_labels[ChainRules.Conditions.locale].sent + '</div><div class="flex-fill text-right ml-2 r-weight-600">' + ChainRules.statistics[id].sent + '</div></div>');
+        tooltip.append('<div class="d-flex"><div>' + ChainRules.statistic_labels[ChainRules.Conditions.locale].sent + '</div><div class="flex-fill text-right ml-2 r-weight-600">' + ChainRules.statistics[id].sent + '</div></div>');
         return tooltip.html();
       }).tooltip({container: 'body', toggle: 'tooltip', html: true, placement: 'bottom'});
     });
