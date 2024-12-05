@@ -226,6 +226,21 @@
 .r-chain-rules .module__block.message .block__text {
   color: #c145d7;
 }
+.r-chain-rules .module__block.message .block__text .message_notation {
+  position: absolute;
+  z-index: 20;
+  top: -35px;
+  left: 90px;
+  transform: translateX(-50%);  
+  padding: 2px 6px;
+  user-select: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: #c145d7;
+  border: 2px solid #c145d7;
+  border-radius: 4px;
+  background-color: #fff;
+}
 .r-chain-rules .module__block.message.selected {
   background: #9e27b3;
   box-shadow: 0 0 0 3px rgba(189, 56, 212, 0.25);

@@ -1,13 +1,14 @@
-import Conditions              from '@rees46/segmentator-library/conditions';
-import helper                  from '@rees46/segmentator-library/helper';
-import { CHANNELS }            from './constants/index.js';
-import { CONDITION_LABELS }    from './constants/index.js';
-import { DATE_LABELS }         from './constants/index.js';
-import { LABEL_PROPERTIES_EN } from './constants/index.js';
-import { LABEL_PROPERTIES_RU } from './constants/index.js';
-import { LABELS }              from './constants/index.js';
-import { ORDER_STATUSES }      from './constants/index.js';
-import { STATISTIC_LABELS }    from './constants/index.js';
+import Conditions                  from '@rees46/segmentator-library/conditions';
+import helper                      from '@rees46/segmentator-library/helper';
+import { CHANNELS }                from './constants/index.js';
+import { CONDITION_LABELS }        from './constants/index.js';
+import { DATE_LABELS }             from './constants/index.js';
+import { LABEL_PROPERTIES_EN }     from './constants/index.js';
+import { LABEL_PROPERTIES_RU }     from './constants/index.js';
+import { LABELS }                  from './constants/index.js';
+import { MESSAGE_NOTATION_LEVELS } from './constants/index.js'
+import { ORDER_STATUSES }          from './constants/index.js';
+import { STATISTIC_LABELS }        from './constants/index.js';
 
 /**
  * Блок условий цепочки
@@ -630,6 +631,54 @@ ChainModule.prototype.addMessage = function (block) {
 };
 
 /**
+ * Добавление уникальных обозначений для сообщений
+ */
+ChainModule.prototype.addMessageNotations = function () {
+  if (this.root.readonly) {
+    this.changeMessageNotations(this.root.module.blocks, '');
+  }
+};
+
+/**
+ * @param {ChainBlock[]} chainBlocks
+ * @param {string} notationText
+ * @param {string} nextNotationLevel
+ */
+ChainModule.prototype.changeMessageNotations = function (chainBlocks, notationText, nextNotationLevel) {
+  let notation = notationText;
+  let nextLevel = nextNotationLevel || MESSAGE_NOTATION_LEVELS[0];
+
+  for (const chain of chainBlocks) {
+    if (chain.data.type === 'message') {
+      notation = `${notation}${nextLevel}`;
+      nextLevel = MESSAGE_NOTATION_LEVELS[0];
+
+      const notationBlock = chain.block.querySelector('.block_notation');
+
+      if (notationBlock) {
+        notationBlock.textContent = notation;
+      }
+    }
+
+    if (chain.left_module) {
+      this.changeMessageNotations(chain.left_module.blocks, notation, MESSAGE_NOTATION_LEVELS[0]);
+    }
+
+    if (chain.right_module) {
+      this.changeMessageNotations(chain.right_module.blocks, notation, MESSAGE_NOTATION_LEVELS[1]);
+    }
+
+    if (chain.right_modules) {
+      chain.right_modules.forEach((module, index) => {
+        if (module?.blocks?.length) {
+          this.changeMessageNotations(module.blocks, notation, MESSAGE_NOTATION_LEVELS[1 + index]);
+        }
+      });
+    }
+  }
+}
+
+/**
  * @return {Array}
  */
 ChainModule.prototype.getData = function () {
@@ -734,6 +783,8 @@ ChainBlock.prototype.htmlAddActionOrCondition = function () {
   return item;
 };
 
+let notationController = new AbortController()
+
 /**
  * Отрисовывает html самого модуля по типу
  * @return {Element}
@@ -761,6 +812,12 @@ ChainBlock.prototype.buildBlock = function () {
 
     case 'message':
       this.block = this.buildMessage();
+
+      // Добавляем уникальные обозначения для сообщений
+      notationController.abort()
+      notationController = new AbortController()
+      this.root.container.addEventListener('rules:change', () => this.module.addMessageNotations(), { signal: notationController.signal });
+      this.root.container.addEventListener('rules:render', () => this.module.addMessageNotations(), { signal: notationController.signal });
       break;
 
     case 'http':
@@ -964,6 +1021,11 @@ ChainBlock.prototype.buildMessage = function () {
   if (ChainRules.templates[this.data.channel]) {
     let message_template = helper.createElementFromHTML('<div class="message_template">' + ChainRules.templates[this.data.channel].find(v => v.id == this.data.template_id)?.name + '</div>');
     block.querySelector('.block__text').appendChild(message_template);
+  }
+
+  if (this.root.readonly) {
+    let message_notation = helper.createElementFromHTML('<div class="block_notation"></div>');
+    block.querySelector('.message__inner').appendChild(message_notation);
   }
 
   //Добавляем кнопку предпросмотра
