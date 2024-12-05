@@ -653,7 +653,7 @@ ChainModule.prototype.changeMessageNotations = function (chainBlocks, notationTe
       notation = `${notation}${nextLevel}`;
       nextLevel = MESSAGE_NOTATION_LEVELS[0];
 
-      const notationBlock = chain.block.querySelector('.block_notation');
+      const notationBlock = chain.block.querySelector('.block__notation');
 
       if (notationBlock) {
         notationBlock.textContent = notation;
@@ -1024,7 +1024,7 @@ ChainBlock.prototype.buildMessage = function () {
   }
 
   if (this.root.readonly) {
-    let message_notation = helper.createElementFromHTML('<div class="block_notation"></div>');
+    let message_notation = helper.createElementFromHTML('<div class="block__notation"></div>');
     block.querySelector('.message__inner').appendChild(message_notation);
   }
 

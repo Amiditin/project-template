@@ -226,7 +226,7 @@
 .r-chain-rules .module__block.message .block__text {
   color: #c145d7;
 }
-.r-chain-rules .module__block.message .block__text .message_notation {
+.r-chain-rules .module__block.message .block__notation {
   position: absolute;
   z-index: 20;
   top: -35px;
