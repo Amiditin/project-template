@@ -256,10 +256,10 @@ $condition-variant-padding: 10px;
       user-select: none;
       font-size: 12px;
       font-weight: 600;
-      color: #c145d7;
-      border: 2px solid #c145d7;
-      border-radius: 4px;
-      background: #fff;
+      color: $grape;
+      border: 2px solid $grape;
+      border-radius: $module-border-radius;
+      background: $white;
     }
   }
 
