@@ -32,6 +32,7 @@ function ChainRules(id, selector, modal_selector, readonly, on_load, shop_id, pe
   this.readonly = readonly || false;
   this.doc = document.querySelector(selector);
   this.container = helper.createElementFromHTML('<div class="module"></div>');
+  this.withMessageNotation = false
   this.doc.appendChild(this.container);
 
   if (!this.readonly) {
@@ -634,7 +635,7 @@ ChainModule.prototype.addMessage = function (block) {
  * Добавление уникальных обозначений для сообщений
  */
 ChainModule.prototype.addMessageNotations = function () {
-  if (this.root.readonly) {
+  if (this.root.readonly && this.root.withMessageNotation) {
     this.changeMessageNotations(this.root.module.blocks, '');
   }
 };
@@ -1008,6 +1009,16 @@ ChainBlock.prototype.buildMessage = function () {
     block.querySelector('.block__type').setAttribute('data-ctr', 'CTR: ' + (Math.round(ChainRules.statistics[this.data.id].clicked / ChainRules.statistics[this.data.id].sent * 1000) / 10) + '%');
   }
 
+  //Добавляем Template ID
+  if (this.data.template_id) {
+    const hasCTR = block.querySelector('.block__type').hasAttribute('data-ctr');
+
+    let template_id = helper.createElementFromHTML(
+      `<div class="block__template-id" title="template-id">${this.data.template_id}</div>`
+    );
+    block.querySelector(hasCTR ? '.block__text' : '.block__type').appendChild(template_id);
+  }
+
   //Если в режиме чтения, добавляем тултип со статистикой
   if (this.root.readonly && ChainRules.statistics[this.data.id] && typeof $ !== 'undefined') {
     $(block).data('title', function () {
@@ -1023,7 +1034,7 @@ ChainBlock.prototype.buildMessage = function () {
     block.querySelector('.block__text').appendChild(message_template);
   }
 
-  if (this.root.readonly) {
+  if (this.root.readonly && this.root.withMessageNotation) {
     let message_notation = helper.createElementFromHTML('<div class="block__notation"></div>');
     block.querySelector('.message__inner').appendChild(message_notation);
   }
