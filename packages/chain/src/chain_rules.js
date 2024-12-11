@@ -1011,12 +1011,10 @@ ChainBlock.prototype.buildMessage = function () {
 
   //Добавляем Template ID
   if (this.data.template_id) {
-    const hasCTR = block.querySelector('.block__type').hasAttribute('data-ctr');
-
     let template_id = helper.createElementFromHTML(
-      `<div class="block__template-id" title="template-id">${this.data.template_id}</div>`
+      `<div class="block__template-id">ID: ${this.data.template_id}</div>`
     );
-    block.querySelector(hasCTR ? '.block__text' : '.block__type').appendChild(template_id);
+    block.querySelector('.message__inner').appendChild(template_id);
   }
 
   //Если в режиме чтения, добавляем тултип со статистикой

@@ -228,10 +228,6 @@ $condition-variant-padding: 10px;
         text-align: right;
         padding-right: $shift;
       }
-      .block__template-id {
-        position: absolute;
-        right: $shift;
-      }
     }
     &__text {
       position: relative;
@@ -245,17 +241,18 @@ $condition-variant-padding: 10px;
         margin-bottom: $module-padding;
       }
       &:hover {
-      .block__template-id {
-        position: absolute;
-        bottom: 2px;
-        right: 4px;
-        font-size: 12px;
-        color: $grape;
-      }
         > .#{$module-name}__actions {
           opacity: 1;
         }
       }
+    }
+    &__template-id {
+      color: $white;
+      padding: 2px 6px;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 12px;
+      text-align: right;
     }
     &__notation {
       position: absolute;
