@@ -1,3 +1,31 @@
+## [2.2.12](https://github.com/rees46/web/compare/@rees46/chain-library-v2.2.1...@rees46/chain-library-2.2.12) (2024-12-11)
+
+
+### Bug Fixes
+
+* chain block-message notation styles ([#1148](https://github.com/rees46/web/issues/1148)) ([a628c16](https://github.com/rees46/web/commit/a628c167324bd05c6e3bc4a89008d2f92a74ca21))
+* chain block-message notation styles ([#1152](https://github.com/rees46/web/issues/1152)) ([adb5c79](https://github.com/rees46/web/commit/adb5c79d102bd3ef34e767324635e6f17e8c5129))
+* chain block-message notation styles ([#1155](https://github.com/rees46/web/issues/1155)) ([25352a6](https://github.com/rees46/web/commit/25352a6ecf84baf160e2e6f1444ec3c6bc782a11))
+* chain version ([#994](https://github.com/rees46/web/issues/994)) ([059249a](https://github.com/rees46/web/commit/059249a43d7441440d4ccf7fe8b5bf9ae20f4e2a))
+* display of locales in tooltip ([#1145](https://github.com/rees46/web/issues/1145)) ([262fc16](https://github.com/rees46/web/commit/262fc165a12c528d7ba8835db598f1b121f23fe3))
+* text alignment ([#1150](https://github.com/rees46/web/issues/1150)) ([c2e848e](https://github.com/rees46/web/commit/c2e848eed5603ced497476c48769d75632642c0a))
+
+
+### Features
+
+* add changes from stage ([#1002](https://github.com/rees46/web/issues/1002)) ([49e916e](https://github.com/rees46/web/commit/49e916e279b478c349cefe99e3994b4c0e7dea02))
+* add changes from stage ([#1004](https://github.com/rees46/web/issues/1004)) ([3de0200](https://github.com/rees46/web/commit/3de0200f309bbd0c5caa6b944a6674c53ed64ec0))
+* add changes from stage ([#1036](https://github.com/rees46/web/issues/1036)) ([0a8ad1b](https://github.com/rees46/web/commit/0a8ad1bd7c2bf11f77587f7e80f7e20cefb6125f))
+* add changes from stage ([#1048](https://github.com/rees46/web/issues/1048)) ([0bee180](https://github.com/rees46/web/commit/0bee18070f1c01315e9731cfa3b78cb2640b6b4b))
+* add changes from stage ([#1136](https://github.com/rees46/web/issues/1136)) ([f5c328c](https://github.com/rees46/web/commit/f5c328c00fb40c502898a3d0481203ddc44e31b3))
+* add changes from stage ([#992](https://github.com/rees46/web/issues/992)) ([ef9f7c3](https://github.com/rees46/web/commit/ef9f7c390d115935f45658bffc72480183d637ed))
+* add new styles to chain message template-id block ([#1171](https://github.com/rees46/web/issues/1171)) ([1c97440](https://github.com/rees46/web/commit/1c9744067c24eba57c693a0a658e7c52197342c3))
+* bump chain version ([#1138](https://github.com/rees46/web/issues/1138)) ([6a7aa34](https://github.com/rees46/web/commit/6a7aa342a6c9a94cdd14b02bb0c84150ae26cd9b))
+* chain block message template-id ([#1157](https://github.com/rees46/web/issues/1157)) ([d42905d](https://github.com/rees46/web/commit/d42905dff28e3c267e42fe55d31d6bf9b47968e6))
+* chain block-message notation ([#1143](https://github.com/rees46/web/issues/1143)) ([0aab9f2](https://github.com/rees46/web/commit/0aab9f21ba985b6717a2591892f6a70a4e3d5ed9))
+
+
+
 ## [2.2.11](https://github.com/rees46/web/compare/@rees46/chain-library-v2.2.1...@rees46/chain-library-2.2.11) (2024-12-11)
 
 
